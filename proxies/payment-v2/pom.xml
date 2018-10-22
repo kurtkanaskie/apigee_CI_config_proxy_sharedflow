@@ -43,6 +43,20 @@
 	<!-- For apigee.options, refer to "Advanced Configuration Options" under https://github.com/apigee/apigee-deploy-maven-plugin#pom-xml-sample -->
 	<profiles>
 		<profile>
+			<id>training-test</id>
+			<properties>
+				<apigee.profile>training-test</apigee.profile>
+				<apigee.env>test</apigee.env>
+				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+				<apigee.apiversion>v1</apigee.apiversion>
+				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
+				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
+				<api.testtag>@intg,@health,@errors,@wip,@mock</api.testtag>
+			</properties>
+		</profile>
+		<profile>
 			<id>test</id>
 			<properties>
 				<apigee.profile>test</apigee.profile>

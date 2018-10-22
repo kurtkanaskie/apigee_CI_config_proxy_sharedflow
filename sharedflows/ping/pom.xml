@@ -74,6 +74,21 @@
 <!-- This is where you add the environment specific properties under various profile names -->
  <profiles>
         <profile>
+            <id>training-test</id>
+            <properties>
+                <apigee.apitype>sharedflow</apigee.apitype>
+                <apigee.profile>training-test</apigee.profile>
+                <apigee.env>test</apigee.env>
+                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
+                <apigee.apiversion>v1</apigee.apiversion>
+                <apigee.org>kurtkanaskietrainer-trial</apigee.org>
+                <apigee.username>${env.APIGEE_USERNAME}</apigee.username>
+                <apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
+                <api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
+                <api.testtag>@intg,@health,@errors,@wip,@mock</api.testtag>
+            </properties>
+        </profile>
+        <profile>
             <id>test</id>
             <properties>
                 <apigee.profile>test</apigee.profile>

@@ -11,6 +11,12 @@
             "policies": [],
             "proxies": [],
             "targets": []
+        },
+        {
+            "name": "training-test",
+            "policies": [],
+            "proxies": [],
+            "targets": []
         }
     ]
 }

@@ -1,3 +1,6 @@
-**/target
+sharedflows/*/target
+proxies/*/target
+node_modules
+**/node_modules
 *.zip
 
