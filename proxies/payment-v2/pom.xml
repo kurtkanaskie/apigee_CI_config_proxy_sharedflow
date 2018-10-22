@@ -43,20 +43,6 @@
 	<!-- For apigee.options, refer to "Advanced Configuration Options" under https://github.com/apigee/apigee-deploy-maven-plugin#pom-xml-sample -->
 	<profiles>
 		<profile>
-			<id>training-test</id>
-			<properties>
-				<apigee.profile>training-test</apigee.profile>
-				<apigee.env>test</apigee.env>
-				<apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-				<apigee.apiversion>v1</apigee.apiversion>
-				<apigee.org>kurtkanaskietrainer-trial</apigee.org>
-				<apigee.username>${env.APIGEE_USERNAME}</apigee.username>
-				<apigee.password>${env.APIGEE_PASSWORD}</apigee.password>
-				<api.northbound.domain>kurtkanaskietrainer-trial-test.apigee.net</api.northbound.domain>
-				<api.testtag>@intg,@health,@errors,@wip,@mock</api.testtag>
-			</properties>
-		</profile>
-		<profile>
 			<id>test</id>
 			<properties>
 				<apigee.profile>test</apigee.profile>
@@ -231,22 +217,7 @@
 							</commandlineArgs>
 						</configuration>
 					</execution>
-					<!-- Check Code Coverage-->
-					<!--<execution>
-						<id>check-coverage</id>
-						<phase>test</phase>
-						<goals>
-							<goal>exec</goal>
-						</goals>
-						<configuration>
-							<executable>node</executable>
-							<commandlineArgs>
-								node_modules/istanbul/lib/cli.js check-coverage
-							</commandlineArgs>
-						</configuration>
-					</execution>-->
 					<!-- run apigeelint -->
-					<!-- its got issues on Jenkins -->
 					<execution>
 						<id>apigeelint</id>
 						<phase>validate</phase>
@@ -268,9 +239,9 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>./node_modules/cucumber/bin/cucumber.js</executable>
+							<executable>node</executable>
 							<commandlineArgs>
-								target/test/integration/features --tags ${api.testtag} --format json:target/reports.json
+								./node_modules/cucumber/bin/cucumber.js target/test/integration/features --tags ${api.testtag} --format json:target/reports.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
@@ -278,28 +249,6 @@
 			</plugin>
         </plugins>
     </build>
-    <!--<profiles>
-        <profile>
-            <id>test</id>
-            <properties>
-                <apigee.profile>test</apigee.profile>
-                <apigee.hosturl>https://api.enterprise.apigee.com</apigee.hosturl>
-                <apigee.apiversion>v1</apigee.apiversion>
-                <apigee.org>${orgname}</apigee.org>
-                <apigee.env>test</apigee.env>
-                <apigee.username>${username}</apigee.username>
-                <apigee.password>${password}</apigee.password>
-                <apigee.authtype>basic</apigee.authtype> 
-                <apigee.tokenurl>https://login.apigee.com/oauth/token</apigee.tokenurl>
-                <apigee.mfatoken>${mfatoken}</apigee.mfatoken>
-                <apigee.clientid>${clientId}</apigee.clientid> 
-                <apigee.clientsecret>${clientSecret}</apigee.clientsecret> 
-                <apigee.bearer>${bearer}</apigee.bearer> 
-                <apigee.refresh>${refresh}</apigee.refresh> 
-                <apigee.apitype>${apitype}</apigee.apitype>
-            </properties>
-        </profile>
-    </profiles>-->
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
